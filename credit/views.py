@@ -4,7 +4,7 @@ def starting_page(request):
     return render(request, "credit/index.html")
 
 def credits(request):
-    pass
+    return render(request, "credit/all-credits.html")
 
 def credit_detail(request):
     pass

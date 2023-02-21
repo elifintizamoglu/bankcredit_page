@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+All Credits
+{% endblock %}
+
+{% block css_files%}
+ <link rel="stylesheet" href=" {% static "credit/credit.css" %}"/>
+ <link rel="stylesheet" href=" {% static "credit/all-credits.css" %}"/>
+{% endblock %}
+
+{% block content%}
+<section>
+    <h2> Collected Credits</h2>
+
+    <ul>
+        {% include "credit/includes/credit.html" %}
+        {% include "credit/includes/credit.html" %}
+        {% include "credit/includes/credit.html" %}
+        {% include "credit/includes/credit.html" %}
+        {% include "credit/includes/credit.html" %}
+        {% include "credit/includes/credit.html" %}
+    </ul>
+</section>
+{% endblock %}

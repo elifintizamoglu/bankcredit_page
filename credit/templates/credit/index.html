@@ -6,20 +6,15 @@ Credit Page
 {% endblock %}
 
 {% block css_files%}
+ <link rel="stylesheet" href=" {% static "credit/credit.css" %}"/>
  <link rel="stylesheet" href=" {% static "credit/index.css" %}"/>
 {% endblock %}
 
 {% block content%}
-<header id="main-navigation">
-    <h1><a href="">Credit Type Page</a></h1>
-    <nav>
-        <a href="">All Credits</a>
-    </nav>
-</header>
 
 <section id="welcome">
     <header>
-        <img src="" alt="Elif">
+        <img src="{% static "credit/images/birinci.png" %}" alt="Elif">
         <h2>CreditPage</h2>
     </header>
     <p>Credit type 1 - Credit type 1</p>
@@ -29,17 +24,7 @@ Credit Page
     <h2>Latest Credits</h2>
 
     <ul>
-        <li>
-            <article class="credit">
-                <a href="">
-                    <img src="" alt="Idunno"/>
-                    <div class="credit__content">
-                        <h3>Idunno</h3>
-                        <p>What is happening!</p>
-                    </div>
-                </a>
-            </article>
-        </li>
+        {% include "credit/includes/credit.html" %}
     </ul>
 </section>
 
