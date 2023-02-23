@@ -24,7 +24,9 @@ Credit Page
     <h2>Latest Credits</h2>
 
     <ul>
-        {% include "credit/includes/credit.html" %}
+        {% for credit in credits %}
+            {% include "credit/includes/credit.html" %}
+        {% endfor %}
     </ul>
 </section>
 

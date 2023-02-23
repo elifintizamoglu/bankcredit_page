@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-This Credit Title
+{{credit.title}}
 {% endblock %}
 
 {% block css_files%}
@@ -11,24 +11,16 @@ This Credit Title
 
 {% block content%}
 <section id="summary">
-   <h2>Credit Title</h2> 
+   <h2>{{credit.title}}</h2> 
    <article>
-    <img src=" {% static "credit/images/birinci.png"%}" alt="Credit Title"/>
+    <img src=" {% static "credit/images/"|add:credit.image%}" alt="{{credit.title}}"/>
     <address> By Elif </address>
-    <div> Last Updated on <time> July 10th </time>
+    <div> Last Updated on <time> {{credit.date|date:"d M Y"}} </time>
     </div>
    </article>
 </section>
 
 <main> 
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, eos rem amet culpa harum repudiandae quae quam fugit soluta quo esse quos beatae neque, sapiente inventore. Saepe distinctio earum at.
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, eos rem amet culpa harum repudiandae quae quam fugit soluta quo esse quos beatae neque, sapiente inventore. Saepe distinctio earum at.
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, eos rem amet culpa harum repudiandae quae quam fugit soluta quo esse quos beatae neque, sapiente inventore. Saepe distinctio earum at.
-    </p>
+    {{credit.content|linebreaks}}
 </main>
 {% endblock %}

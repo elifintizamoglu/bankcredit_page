@@ -11,16 +11,13 @@ All Credits
 {% endblock %}
 
 {% block content%}
-<section>
+<section id="all-credits">
     <h2> Collected Credits</h2>
 
     <ul>
-        {% include "credit/includes/credit.html" %}
-        {% include "credit/includes/credit.html" %}
-        {% include "credit/includes/credit.html" %}
-        {% include "credit/includes/credit.html" %}
-        {% include "credit/includes/credit.html" %}
-        {% include "credit/includes/credit.html" %}
+        {% for credit in all_credits %}
+            {% include "credit/includes/credit.html" %}
+        {% endfor %}
     </ul>
 </section>
 {% endblock %}
