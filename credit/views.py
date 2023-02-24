@@ -5,27 +5,27 @@ from datetime import date
 all_credits = [
     {
         "slug":"mortgage",
-        "image":"birinci.png",
+        "image":"mortgage.jpg",
         "date":date(2023, 2, 23),
-        "title": "Idunno",
-        "excerpt": "What is happening!",
-        "content":"111Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, eos rem amet culpa harum repudiandae quae quam fugit soluta quo esse quos beatae neque, sapiente inventore. Saepe distinctio earum at." 
+        "title": "Mortgage",
+        "excerpt": "Used to buy a home or to borrow money against the value of a home you already own.",
+        "content":"A mortgage is an agreement between you and a lender that gives the lender the right to take your property if you fail to repay the money you've borrowed plus interest. Mortgage loans are used to buy a home or to borrow money against the value of a home you already own." 
     },
     {
-        "slug":"car",
-        "image":"dorduncu.jpg",
+        "slug":"carloans",
+        "image":"carloans.jpg",
         "date":date(2023, 5, 23),
-        "title": "Idunno2",
-        "excerpt": "What is happening!2",
-        "content":"222Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, eos rem amet culpa harum repudiandae quae quam fugit soluta quo esse quos beatae neque, sapiente inventore. Saepe distinctio earum at." 
+        "title": "Car Loans",
+        "excerpt": "Used to buy a car or to borrow money against the value of a car you already own.",
+        "content":"A car loan is an agreement between you and a lender that gives the lender the right to take your property if you fail to repay the money you've borrowed plus interest. Car loans are used to buy a car or to borrow money against the value of a car you already own." 
     },
     {
-        "slug":"business",
-        "image":"ucuncu.png",
+        "slug":"educationloans",
+        "image":"educationalloans.png",
         "date":date(2023, 8, 23),
-        "title": "Idunno3",
-        "excerpt": "What is happening!3",
-        "content":"333Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, eos rem amet culpa harum repudiandae quae quam fugit soluta quo esse quos beatae neque, sapiente inventore. Saepe distinctio earum at." 
+        "title": "Education Loans",
+        "excerpt": "Used for educational purposes.",
+        "content":"A car loan is given to students in the purpose of helping education." 
     }
 ]
 
