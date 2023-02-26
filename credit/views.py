@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from datetime import date
 
+from .models import Credit
+
 all_credits = [
     {
         "slug":"mortgage",
@@ -25,7 +27,7 @@ all_credits = [
         "date":date(2023, 8, 23),
         "title": "Education Loans",
         "excerpt": "Used for educational purposes.",
-        "content":"A car loan is given to students in the purpose of helping education." 
+        "content":"An educational loan is given to students in the purpose of helping education." 
     }
 ]
 
