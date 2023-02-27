@@ -3,11 +3,10 @@
 <li>
     <article class="credit">
         <a href="{% url "credit-detail-page" credit.slug %}">
-            <img src="{% static "credit/images/"|add:credit.image %}" alt="{{credit.title}}"/>
+            <img src="{% static "credit/images/mortgage.jpg" %}" alt="{{credit.name}}"/>
             <div class="credit__content">
-                <h3>{{ credit.title}}</h3>
+                <h3>{{ credit.name}}</h3>
                 <p>{{ credit.excerpt }}</p>
             </div>
-        </a>
     </article>
 </li>

@@ -35,13 +35,14 @@ def get_date(credit):
     return credit['date']
 
 def starting_page(request):
-    sorted_credits = sorted(all_credits, key=get_date)
-    latest_credits= sorted_credits[-3:]
-    return render(request, "credit/index.html", {"credits": latest_credits})
+    allcredits = Credit.objects.all()
+    return render(request, "credit/index.html", {"credits": allcredits})
 
 def credits(request):
-    return render(request, "credit/all-credits.html", {"all_credits":all_credits})
+    allcredits = Credit.objects.all()
+    return render(request, "credit/all-credits.html", {"allcredits":allcredits})
 
 def credit_detail(request,slug):
-    identified_credit= next(credit for credit in all_credits if credit['slug']== slug)
+    #identified_credit= next(credit for credit in all_credits if credit['slug']== slug)
+    identified_credit = Credit.objects.get(slug=slug)
     return render(request,"credit/credit-detail.html", {"credit":identified_credit})

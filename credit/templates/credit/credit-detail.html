@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-{{credit.title}}
+{{credit.name}}
 {% endblock %}
 
 {% block css_files%}
@@ -11,16 +11,18 @@
 
 {% block content%}
 <section id="summary">
-   <h2>{{credit.title}}</h2> 
+   <h2>{{credit.name}}</h2> 
    <article>
-    <img src=" {% static "credit/images/"|add:credit.image%}" alt="{{credit.title}}"/>
+    <img src=" {% static "credit/images/mortgage.jpg"%}" alt="{{credit.name}}"/>
     <address> By Elif </address>
-    <div> Last Updated on <time> {{credit.date|date:"d M Y"}} </time>
+    <div> Last Updated on
     </div>
    </article>
 </section>
 
 <main> 
     {{credit.content|linebreaks}}
+    {{credit.interest_rate}}
+    {{credit.loan_amount}}
 </main>
 {% endblock %}
