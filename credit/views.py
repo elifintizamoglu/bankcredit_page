@@ -36,7 +36,9 @@ def get_date(credit):
 
 def starting_page(request):
     allcredits = Credit.objects.all()
-    return render(request, "credit/index.html", {"credits": allcredits})
+    num_credits=allcredits.count()
+    return render(request, "credit/index.html", {"credits": allcredits,
+     "total_number_of_credits":num_credits})
 
 def credits(request):
     allcredits = Credit.objects.all()
