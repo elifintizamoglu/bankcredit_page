@@ -14,3 +14,33 @@ class Credit(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    
+
+class Address(models.Model):
+    street = models.CharField(max_length=30,null=True)
+    building_name= models.CharField(max_length=30,null=True)
+    flat_no = models.IntegerField(null=True,validators=[MinValueValidator(0),MaxValueValidator(999)])
+    district = models.CharField(max_length=30)
+    city = models.CharField(max_length=30)
+    postal_code = models.CharField(max_length=5,null=True)
+
+    def __str__(self):
+        return f"{self.street}, {self.building_name}, No: {self.flat_no}, {self.district}, {self.city}, Postal Code: {self.postal_code} "
+    
+
+    class Meta: #register special settings, which will affect how this model is used
+        verbose_name_plural = "Address Entries" #how to address model is outputted when plural needed
+
+
+class Customer(models.Model):
+    first_name = models.CharField(max_length=100,null=False)
+    last_name = models.CharField(max_length=100,null=False)
+    identification_number = models.IntegerField(null=False,validators=[MinValueValidator(11111111111),MaxValueValidator(99999999999)])
+    credit = models.ForeignKey(Credit,on_delete=models.SET_NULL,null=True,related_name="customers")
+    address = models.OneToOneField(Address,on_delete=models.SET_NULL,null=True)
+
+    def full_name(self):
+        return f"{self.first_name}  {self.last_name}"
+
+    def __str__(self):
+        return self.full_name()
