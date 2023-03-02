@@ -12,8 +12,13 @@
 {% block content%}
 <section id="summary">
    <h2>{{credit.name}}</h2> 
+   <div>
+    {%for customer in credit_customers%}
+    <span class = "customer">{{customer.full_name}}</span>
+    {%endfor%}
+   </div>
    <article>
-    <img src=" {% static "credit/images/mortgage.jpg"%}" alt="{{credit.name}}"/>
+    <img src=" {% static "credit/images/"|add:credit.image_name%}" alt="{{credit.name}}"/>
     <address> By Elif </address>
     <div> Last Updated on
     </div>

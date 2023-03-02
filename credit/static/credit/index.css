@@ -64,6 +64,11 @@
     background-color: #e48900;
     margin-top: 5rem;
   }
+
+  #about a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
   
   #about h2 {
     font-size: 3rem;

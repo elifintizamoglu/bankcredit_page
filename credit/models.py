@@ -1,20 +1,8 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.utils.text import slugify
 
 # Create your models here.
-
-class Credit(models.Model):
-    name = models.CharField(max_length=50)
-    excerpt = models.CharField(max_length=150)
-    content = models.CharField(max_length=500)
-    slug = models.SlugField(default="",null=False,db_index=True)
-    interest_rate = models.DecimalField(max_digits=6,decimal_places=4)
-    loan_amount = models.IntegerField(default=500000,validators=[MinValueValidator(500000),MaxValueValidator(6000000)])
-
-    def __str__(self):
-        return f"{self.name}"
-    
 
 class Address(models.Model):
     street = models.CharField(max_length=30,null=True)
@@ -27,7 +15,6 @@ class Address(models.Model):
     def __str__(self):
         return f"{self.street}, {self.building_name}, No: {self.flat_no}, {self.district}, {self.city}, Postal Code: {self.postal_code} "
     
-
     class Meta: #register special settings, which will affect how this model is used
         verbose_name_plural = "Address Entries" #how to address model is outputted when plural needed
 
@@ -36,7 +23,6 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=100,null=False)
     last_name = models.CharField(max_length=100,null=False)
     identification_number = models.IntegerField(null=False,validators=[MinValueValidator(11111111111),MaxValueValidator(99999999999)])
-    credit = models.ForeignKey(Credit,on_delete=models.SET_NULL,null=True,related_name="customers")
     address = models.OneToOneField(Address,on_delete=models.SET_NULL,null=True)
 
     def full_name(self):
@@ -44,3 +30,17 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.full_name()
+    
+
+class Credit(models.Model):
+    name = models.CharField(max_length=50)
+    excerpt = models.CharField(max_length=150)
+    content = models.TextField(validators=[MinLengthValidator(10)])
+    image_name = models.CharField(max_length=30,null=True)
+    slug = models.SlugField(default="",null=False,db_index=True,unique=True)
+    interest_rate = models.DecimalField(max_digits=6,decimal_places=4)
+    loan_amount = models.IntegerField(default=500000,validators=[MinValueValidator(500000),MaxValueValidator(6000000)])
+    customers=models.ManyToManyField(Customer, related_name="credits")
+
+    def __str__(self):
+        return f"{self.name}"

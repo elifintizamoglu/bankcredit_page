@@ -9,7 +9,8 @@ class CreditAdmin(admin.ModelAdmin): # this class allows you to set various opti
     list_display = ("name","loan_amount")
 
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ("full_name","credit")
+    list_display = ("full_name",)
+
 
 admin.site.register(Credit,CreditAdmin) 
 admin.site.register(Customer,CustomerAdmin)
