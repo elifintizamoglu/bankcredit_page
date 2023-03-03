@@ -23,6 +23,8 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=100,null=False)
     last_name = models.CharField(max_length=100,null=False)
     identification_number = models.IntegerField(null=False,validators=[MinValueValidator(11111111111),MaxValueValidator(99999999999)])
+    job_title = models.CharField(max_length=50,null=True)
+    salary = models.IntegerField(validators=[MinValueValidator(10000)],null=True)
     address = models.OneToOneField(Address,on_delete=models.SET_NULL,null=True)
 
     def full_name(self):
