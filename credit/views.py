@@ -12,3 +12,16 @@ def credits(request):
 def credit_detail(request,slug):
     identified_credit = get_object_or_404(Credit,slug=slug)
     return render(request,"credit/credit-detail.html", {"credit":identified_credit,"credit_customers": identified_credit.customers.all()})
+
+def application_form(request):
+    if request.method =='POST':
+       entered_username=request.POST['username'] 
+       """post will hold a dictionary where the keys are the names set on the inputs in the form and values are entered values"""
+       
+       if entered_username=="" and len(entered_username) >=100:
+           return render(request, "credit/application-form.html",{"has_error":True})
+       
+       print(entered_username)
+       return render(request, "credit/application-form.html")
+
+    return render(request, "credit/application-form.html")
