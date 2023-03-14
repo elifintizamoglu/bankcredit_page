@@ -1,12 +1,10 @@
 {% load static%}
 
-<li>
-    <article class="credit">
-        <a href="{% url "credit-detail-page" credit.slug %}">
-            <img src="{% static "credit/images/"|add:credit.image_name%}" alt="{{credit.name}}"/>
-            <div class="credit__content">
-                <h3>{{ credit.name}}</h3>
-                <p>{{ credit.excerpt }}</p>
-            </div>
-    </article>
-</li>
+<div class="card" style="width: 18rem; display:inline-block;">
+    <img src="{% static "credit/images/"|add:credit.image_name%}" class="card-img-top" alt="{{credit.name}}"/>
+    <div class="card-body">
+        <h5 class="card-title">{{ credit.name}}</h5>
+        <p class="card-text">{{ credit.excerpt }}</p>
+        <a href="{% url "credit-detail-page" credit.slug %}" class="btn btn-primary">Go To Detail Page</a>
+    </div>
+</div>

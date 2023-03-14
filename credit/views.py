@@ -13,7 +13,33 @@ def credits(request):
 
 def credit_detail(request,slug):
     identified_credit = get_object_or_404(Credit,slug=slug)
-    return render(request,"credit/credit-detail.html", {"credit":identified_credit,"credit_customers": identified_credit.customers.all()})
+    return render(request,"credit/credit-detail.html", {"credit":identified_credit})#"credit_customers": identified_credit.customers.all()
+
+"""
+def banks(request):
+    all_banks=Bank.objects.all()
+    return render(request, "credit/all-banks.html", {"all_banks":all_banks})
+
+
+def bank_detail(request,slug):
+    identified_bank= get_object_or_404(Bank,slug=slug)
+    return render(request,"credit/bank-detail.html", {"bank":identified_bank,"bank_credits": identified_bank.credit_types.all()})
+"""
+class ApplicationView(View):
+    def get(self,request):
+        form = ApplicationForm()
+        return render(request, "credit/application-form.html",{"form":form})
+
+    def post(self,request):
+        form = ApplicationForm(request.POST)
+    
+        if form.is_valid():
+            form.save()
+            return render(request, "credit/all-credits.html")
+        
+        return render(request, "credit/application-form.html",{"form":form})
+    
+
 
 """
 def application_form(request):
@@ -44,7 +70,7 @@ def application_form(request):
 
     return render(request, "credit/application-form.html",{"form":form})
 """
-
+"""
 class ApplicationView(View):
     def get(self,request):
         form = ApplicationForm()
@@ -72,4 +98,5 @@ class ApplicationView(View):
             customer.save()
             return render(request, "credit/all-credits.html")
         
-        return render(request, "credit/application-form.html",{"form":form})
+    """
+        

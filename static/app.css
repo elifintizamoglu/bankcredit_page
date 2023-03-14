@@ -4,14 +4,13 @@
   box-sizing: border-box;
 }
 
-
-
 html {
   font-family: 'Open Sans', 'Lato', sans-serif;
 }
 
 body {
   margin: 0;
+  background-color: #cf79f1;
 }
 
 h1,

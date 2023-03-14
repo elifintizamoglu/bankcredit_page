@@ -6,17 +6,13 @@
 {% endblock %}
 
 {% block css_files%}
- <link rel="stylesheet" href=" {% static "credit/credit-detail.css" %}"/>
+ <!-- <link rel="stylesheet" href=" {% static "credit/credit-detail.css" %}"/> -->
 {% endblock %}
 
 {% block content%}
 <section id="summary">
    <h2>{{credit.name}}</h2> 
-   <div>
-    {%for customer in credit_customers%}
-    <span class = "customer">{{customer.full_name}}</span>
-    {%endfor%}
-   </div>
+   
    <article>
     <img src=" {% static "credit/images/"|add:credit.image_name%}" alt="{{credit.name}}"/>
     <address> By Elif </address>
@@ -29,5 +25,6 @@
     {{credit.content|linebreaks}}
     {{credit.interest_rate}}
     {{credit.loan_amount}}
+    <a href="{% url "application-page" %}" class="btn btn-primary">Go To Application Page</a>
 </main>
 {% endblock %}

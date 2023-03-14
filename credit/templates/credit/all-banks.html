@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+All Banks
+{% endblock %}
+
+
+{% block content %}
+{% for bank in all_banks%}
+<div class="card" style="width: 18rem; display:inline-block;">
+    <div class="card-body">
+        <h5 class="card-title">{{ bank.bank_name}}</h5>
+    </div>
+</div>
+{%endfor%}
+{% endblock %}

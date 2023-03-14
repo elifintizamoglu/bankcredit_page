@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Credit,Customer,Address
+from .models import Credit,Customer,Address,BankOption
 
 # Register your models here.
 
@@ -11,8 +11,13 @@ class CreditAdmin(admin.ModelAdmin): # this class allows you to set various opti
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ("full_name",)
 
+class BankOptionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",),}
+
+
 
 admin.site.register(Credit,CreditAdmin) 
 admin.site.register(Customer,CustomerAdmin)
 admin.site.register(Address)
+admin.site.register(BankOption,BankOptionAdmin)
 #tells django this model should be added to the administration site

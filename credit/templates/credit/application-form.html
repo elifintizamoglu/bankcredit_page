@@ -1,14 +1,16 @@
-{%load static%}
+{% extends "base.html" %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credit Application Form</title>
-    <link rel="stylesheet" href="{% static "credit/application-form.css" %}"
-</head>
-<body>
+
+{% block title %}
+Credit Application Form
+{% endblock %}
+
+{% block css_files%}
+    <!-- <link rel="stylesheet" href="{% static "credit/application-form.css" %}"> -->
+{% endblock %}
+
+{% block content %}
     <form action="/application" , method="POST">
         {% csrf_token %}
         {% for field in form%}
@@ -20,5 +22,4 @@
         {%endfor%}
         <button type="submit">Send</button>
     </form>
-</body>
-</html>
+{%endblock%}

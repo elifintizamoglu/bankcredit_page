@@ -6,14 +6,13 @@ All Credits
 {% endblock %}
 
 {% block css_files%}
- <link rel="stylesheet" href=" {% static "credit/credit.css" %}"/>
- <link rel="stylesheet" href=" {% static "credit/all-credits.css" %}"/>
+ <!-- <link rel="stylesheet" href=" {% static "credit/credit.css" %}"/>
+ <link rel="stylesheet" href=" {% static "credit/all-credits.css" %}"/>-->
 {% endblock %}
 
 {% block content%}
 <section id="all-credits">
     <h2>Credits</h2>
-
     <ul>
         {% for credit in all_credits %}
             {% include "credit/includes/credit.html" %}
