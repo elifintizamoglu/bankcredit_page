@@ -14,8 +14,6 @@ class CustomerAdmin(admin.ModelAdmin):
 class BankOptionAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",),}
 
-
-
 admin.site.register(Credit,CreditAdmin) 
 admin.site.register(Customer,CustomerAdmin)
 admin.site.register(Address)

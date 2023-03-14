@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{bank.name}}
+{% endblock %}
+
+{% block css_files%}
+ <!-- <link rel="stylesheet" href=" {% static "credit/credit-detail.css" %}"/> -->
+{% endblock %}
+
+{% block content%}
+<section id="summary">
+   <h2>{{bank.name}}</h2> 
+   
+   <article>
+    {% for credit in bank_credits%}
+        <h3>{{credit.name}}</h3>
+        {{credit.content|linebreaks}}
+        <a href="{% url "application-page" %}" class="btn btn-primary">Go To Application Page</a>
+    {% endfor %}
+   </article>
+</section>
+{% endblock %}

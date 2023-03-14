@@ -21,13 +21,13 @@ Credit Page
 </section>
 
 <section id="latest-credits">
-    <h2>Latest Seen Credits</h2>
+    <h2>Banks</h2>
 
     <div class="container text-center">
         <div class="row align-items-start">
             <ul>
-                {% for credit in credits %}
-                    {% include "credit/includes/credit.html" %}
+                {% for bank in banks %}
+                    {% include "credit/includes/bank.html" %}
                 {% endfor %}
             </ul>
         </div>
