@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.utils.text import slugify
+from django.urls import reverse
 
 # Create your models here.
 
@@ -52,3 +53,8 @@ class BankOption(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    
+    """
+    def get_absolute_url(self):
+        return reverse('bank:credit_detail', kwargs={"bank": self.slug, "credit": self.credit_types.slug})
+    """

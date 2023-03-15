@@ -16,7 +16,7 @@ class ApplicationForm(forms.Form):
     })
     identification_number= forms.CharField(max_length=11,min_length=11)
     job_title = forms.CharField(max_length=50)
-    salary = forms.IntegerField(min_value=10000)
+    salary = forms.IntegerField()
     street = forms.CharField(max_length=30)
     district = forms.CharField(max_length=30)
     city = forms.CharField(max_length=30)

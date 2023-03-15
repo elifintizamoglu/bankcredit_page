@@ -17,7 +17,7 @@
     {% for credit in bank_credits%}
         <h3>{{credit.name}}</h3>
         {{credit.content|linebreaks}}
-        <a href="{% url "application-page" %}" class="btn btn-primary">Go To Application Page</a>
+        <a href="{% url "bank-a-credit-application-page" slug=credit.slug %}" class="btn btn-primary">Go To Application Page</a>
     {% endfor %}
    </article>
 </section>
