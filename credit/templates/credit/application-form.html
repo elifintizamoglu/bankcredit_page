@@ -11,6 +11,11 @@ Credit Application Form
 {% endblock %}
 
 {% block content %}
+    <header>
+        <h2>{{bank.name}}</h2>
+        <h2>{{credit.name}}</h2>
+    </header>
+
     <form method="POST">
         {% csrf_token %}
         {% for field in form%}

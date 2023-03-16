@@ -17,7 +17,13 @@
     {% for credit in bank_credits%}
         <h3>{{credit.name}}</h3>
         {{credit.content|linebreaks}}
-        <a href="{% url "bank-a-credit-application-page" slug=credit.slug %}" class="btn btn-primary">Go To Application Page</a>
+        {% if bank.name == 'Bank A'%}
+            <a href="{% url "bank-a-credit-application-page" slug=credit.slug %}" class="btn btn-primary">Go To Application Page</a>
+        {% elif bank.name == 'Bank B'%}
+            <a href="{% url "bank-b-credit-application-page" slug=credit.slug %}" class="btn btn-primary">Go To Application Page</a>
+        {% elif bank.name == 'Bank C'%}
+            <a href="{% url "bank-c-credit-application-page" slug=credit.slug %}" class="btn btn-primary">Go To Application Page</a>
+        {%endif%}
     {% endfor %}
    </article>
 </section>

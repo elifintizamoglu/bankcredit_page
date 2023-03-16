@@ -6,13 +6,11 @@ from django.urls import reverse
 # Create your models here.
 
 class Address(models.Model):
-    street = models.CharField(max_length=30,null=True)
     district = models.CharField(max_length=30)
     city = models.CharField(max_length=30)
-    postal_code = models.CharField(max_length=5,null=True)
-
+    
     def __str__(self):
-        return f"{self.street}, {self.district}, {self.city}, Postal Code: {self.postal_code} "
+        return f"{self.district}, {self.city}"
     
     class Meta: #register special settings, which will affect how this model is used
         verbose_name_plural = "Address Entries" #how to address model is outputted when plural needed
@@ -21,7 +19,7 @@ class Address(models.Model):
 class Customer(models.Model):
     first_name = models.CharField(max_length=100,null=False)
     last_name = models.CharField(max_length=100,null=False)
-    identification_number = models.CharField(null=False,unique=True,max_length=11)
+    identification_number = models.CharField(null=False,unique=True,max_length=11,error_messages ={"unique":"This identification number has been already registered!"})
     job_title = models.CharField(max_length=50,null=True)
     salary = models.IntegerField(validators=[MinValueValidator(10000)],null=True)
     address = models.ForeignKey(Address,on_delete=models.SET_NULL,null=True)
