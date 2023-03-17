@@ -26,7 +26,7 @@ def bank_detail(request,slug):
 
 def bank_a_application(request,slug):
     bank=BankOption.objects.get(name="Bank A")
-    credit = get_object_or_404(Credit,slug=slug)
+    credit = get_object_or_404(Credit,slug=slug)        
 
     if request.method =='POST':
         form = ApplicationForm(request.POST)
@@ -37,29 +37,35 @@ def bank_a_application(request,slug):
                                identification_number=form.cleaned_data['identification_number'],
                                job_title=form.cleaned_data['job_title'],
                                salary=form.cleaned_data['salary'])
-            
             address_form = Address(district=form.cleaned_data['district'],
                                city=form.cleaned_data['city'])
-            
-            try:
-                addr_db=Address.objects.get(district=address_form.district,
+                
+            def customer_control(customer,address_form):
+                flag= False
+                try:
+                    cstr_db=Customer.objects.get(identification_number=customer.identification_number)
+                except:
+                    try:
+                        addr_db=Address.objects.get(district=address_form.district,
                                    city = address_form.city)
-                address_form.id=addr_db.id
-            except:
-                address_form.save()
-            finally:
-                customer.address=address_form
-                customer.save()
-
-            if (credit.slug == "mortgage-loan") and (customer.salary >= 100.000):
-                return render(request, "credit/application-succesful.html")
+                        address_form.id=addr_db.id
+                    except:
+                        address_form.save()
+                    finally:
+                        customer.address=address_form
+                        customer.save()
+                        flag=True
+                return flag
             
+            if (credit.slug == "mortgage-loan") and (customer.salary >= 100000):
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
             elif (credit.slug == "car-loan") and (customer.salary >= 50000):
-                return render(request, "credit/application-succesful.html")
-            
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
             elif (credit.slug == "educational-loan") and (customer.salary >= 5000):
-                return render(request, "credit/application-succesful.html")
-            
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
             else: 
                 return render(request, "credit/application-failed.html")
             
@@ -82,29 +88,35 @@ def bank_b_application(request,slug):
                                identification_number=form.cleaned_data['identification_number'],
                                job_title=form.cleaned_data['job_title'],
                                salary=form.cleaned_data['salary'])
-            
             address_form = Address(district=form.cleaned_data['district'],
                                city=form.cleaned_data['city'])
             
-            try:
-                addr_db=Address.objects.get(district=address_form.district,
+            def customer_control(customer,address_form):
+                flag= False
+                try:
+                    cstr_db=Customer.objects.get(identification_number=customer.identification_number)
+                except:
+                    try:
+                        addr_db=Address.objects.get(district=address_form.district,
                                    city = address_form.city)
-                address_form.id=addr_db.id
-            except:
-                address_form.save()
-            finally:
-                customer.address=address_form
-                customer.save()
+                        address_form.id=addr_db.id
+                    except:
+                        address_form.save()
+                    finally:
+                        customer.address=address_form
+                        customer.save()
+                        flag=True
+                return flag
 
             if (credit.slug == "mortgage-loan") and (customer.salary >= 100000):
-                return render(request, "credit/application-succesful.html")
-            
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")          
             elif (credit.slug == "car-loan") and (customer.salary >= 50000):
-                return render(request, "credit/application-succesful.html")
-            
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
             elif (credit.slug == "educational-loan") and (customer.salary >= 5000):
-                return render(request, "credit/application-succesful.html")
-            
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")         
             else: 
                 return render(request, "credit/application-failed.html")
             
@@ -130,26 +142,33 @@ def bank_c_application(request,slug):
             address_form = Address(district=form.cleaned_data['district'],
                                city=form.cleaned_data['city'])
 
-            try:
-                addr_db=Address.objects.get(district=address_form.district,
+            def customer_control(customer,address_form):
+                flag= False
+                try:
+                    cstr_db=Customer.objects.get(identification_number=customer.identification_number)
+                except:
+                    try:
+                        addr_db=Address.objects.get(district=address_form.district,
                                    city = address_form.city)
-                address_form.id=addr_db.id
-            except:
-                address_form.save()
-            finally:
-                customer.address=address_form
-                customer.save()
+                        address_form.id=addr_db.id
+                    except:
+                        address_form.save()
+                    finally:
+                        customer.address=address_form
+                        customer.save()
+                        flag=True
+                return flag
 
 
             if (credit.slug == "mortgage-loan") and (customer.salary >= 30000):
-                return render(request, "credit/application-succesful.html")
-            
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")      
             elif (credit.slug == "car-loan") and (customer.salary >= 15000):
-                return render(request, "credit/application-succesful.html")
-            
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
             elif (credit.slug == "educational-loan") and (customer.salary >= 2000):
-                return render(request, "credit/application-succesful.html")
-            
+                flag = customer_control(customer,address_form)
+                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
             else: 
                 return render(request, "credit/application-failed.html")
             

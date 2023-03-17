@@ -5,13 +5,17 @@
 All Banks
 {% endblock %}
 
+{% block css_files%}
+ <link rel="stylesheet" href=" {% static "credit/credit.css" %}"/>
+ <link rel="stylesheet" href=" {% static "credit/all-credits.css" %}"/>
+{% endblock %}
 
 {% block content %}
 {% for bank in all_banks%}
 <div class="card" style="width: 18rem; display:inline-block;">
     <div class="card-body">
         <h5 class="card-title">{{ bank.name}}</h5>
-        <a href="{% url "bank-detail-page" bank.slug %}" class="btn btn-primary">Go To Detail Page</a>
+        <a href="{% url "bank-detail-page" bank.slug %}" class="btn btn-dark">Go To Detail Page</a>
     </div>
 </div>
 {%endfor%}

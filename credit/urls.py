@@ -9,5 +9,5 @@ urlpatterns = [
     path("banks/<slug:slug>",views.bank_detail,name="bank-detail-page"),
     path("banks/bank-a/<slug:slug>",views.bank_a_application,name="bank-a-credit-application-page"),
     path("banks/bank-b/<slug:slug>",views.bank_b_application,name="bank-b-credit-application-page"),
-    path("banks/bank-c/<slug:slug>",views.bank_c_application,name="bank-c-credit-application-page")  
+    path("banks/bank-c/<slug:slug>",views.bank_c_application,name="bank-c-credit-application-page")
 ]
