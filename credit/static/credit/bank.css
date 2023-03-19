@@ -19,16 +19,6 @@
     color: white;
   }
   
-  .card img {
-    width: 5rem;
-    height: 5rem;
-    object-fit: cover;
-    border-radius: 20%;
-    object-position: bottom;
-    position:relative; 
-    top:12px;
-  }
-  
   .card h4 {
     margin: 0.25rem 0;
   }

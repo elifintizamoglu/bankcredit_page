@@ -6,17 +6,17 @@ All Banks
 {% endblock %}
 
 {% block css_files%}
- <link rel="stylesheet" href=" {% static "credit/credit.css" %}"/>
- <link rel="stylesheet" href=" {% static "credit/all-credits.css" %}"/>
+ <link rel="stylesheet" href=" {% static "credit/bank.css" %}"/>
+ <link rel="stylesheet" href=" {% static "credit/all-banks.css" %}"/>
 {% endblock %}
 
 {% block content %}
-{% for bank in all_banks%}
-<div class="card" style="width: 18rem; display:inline-block;">
-    <div class="card-body">
-        <h5 class="card-title">{{ bank.name}}</h5>
-        <a href="{% url "bank-detail-page" bank.slug %}" class="btn btn-dark">Go To Detail Page</a>
-    </div>
-</div>
-{%endfor%}
+<section id="all-banks">
+    <h2>BANKS</h2>
+    <ul>
+        {% for bank in all_banks%}
+            {% include "credit/includes/bank.html" %}
+        {% endfor %}
+    </ul>
+</section>
 {% endblock %}

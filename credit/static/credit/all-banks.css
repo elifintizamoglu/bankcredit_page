@@ -1,12 +1,25 @@
-#all-credits {
-    margin: 7rem auto;
-    width: 90%;
-    max-width: 60rem;
-  }
-  
-  #all-credits h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #2e2e2e;
-    margin: 3rem 0;
-  }
+body {
+  background-color: #6305dd;
+}
+
+#all-banks {
+  margin: 7rem auto;
+  width: 90%;
+  max-width: 60rem;
+}
+
+#all-banks h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  margin: 3rem 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1.5rem;
+}
