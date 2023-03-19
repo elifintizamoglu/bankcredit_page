@@ -5,7 +5,16 @@
 Application Failed
 {% endblock %}
 
+{% block css_files%}
+ <link rel="stylesheet" href=" {% static "credit/application.css" %}"/>
+{% endblock %}
 
 {% block content %}
-<div>Application Failed</div>
+<section id="failed">
+    <header>
+        <h1>APPLICATION FAILED</h1>
+    </header>
+    <p>Your application is <b>NOT</b> appropriate for bank's conditions.</p>
+    <p>Try applying to another credit.</p>
+</section>
 {% endblock %}

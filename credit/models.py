@@ -23,6 +23,8 @@ class Customer(models.Model):
     job_title = models.CharField(max_length=50,null=True)
     salary = models.IntegerField(validators=[MinValueValidator(10000)],null=True)
     address = models.ForeignKey(Address,on_delete=models.SET_NULL,null=True)
+    bank = models.CharField(max_length=30,null=True)
+    credit = models.CharField(max_length=30,null=True)
 
     def full_name(self):
         return f"{self.first_name}  {self.last_name}"
@@ -51,8 +53,3 @@ class BankOption(models.Model):
 
     def __str__(self):
         return f"{self.name}"
-    
-class Application(models.Model):
-    identification_number = models.CharField(null=False,unique=True,max_length=11,error_messages ={"unique":"This identification number has been already registered!"})
-    bank_name = models.CharField(max_length=30)
-    credit_name = models.CharField(max_length=50)

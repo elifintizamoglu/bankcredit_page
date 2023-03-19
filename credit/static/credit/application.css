@@ -1,0 +1,32 @@
+body {
+    background-color: #e7e7e7;
+  }
+
+#succesful, 
+#failed,
+#done_before {
+    margin: 5rem auto 3rem auto;
+    padding: 2rem;
+    width: 95%;
+    max-width: 90rem;
+    border-radius: 16px;
+    background-color: #5706c0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    height: 24rem;
+    text-align: center;
+    color: white;
+  }
+
+ header {
+    text-align: center;
+    color: black;
+}
+
+h4 {
+    color:black;
+}
+
+b {
+    color:rgb(213, 148, 233);
+}

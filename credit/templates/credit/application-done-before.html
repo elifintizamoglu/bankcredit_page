@@ -6,6 +6,16 @@ Application Done Before
 {% endblock %}
 
 
+{% block css_files%}
+ <link rel="stylesheet" href=" {% static "credit/application.css" %}"/>
+{% endblock %}
+
 {% block content %}
-<div>An application has been done before with this identification number.</div>
+<section id="done_before">
+    <header>
+        <h1>APPLICATION IS ALREADY TAKEN!</h1>
+    </header>
+    <p>An application with <b>{{customer.identification_number}}</b> identification number is already made to the <b>{{customer.bank}}</b> for <b>{{customer.credit}}</b>.</p>
+    <p>Visit the bank before making another application.</p>
+</section>
 {% endblock %}

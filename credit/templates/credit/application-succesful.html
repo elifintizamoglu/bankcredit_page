@@ -5,7 +5,23 @@
 Application Succesful
 {% endblock %}
 
+{% block css_files%}
+ <link rel="stylesheet" href=" {% static "credit/application.css" %}"/>
+{% endblock %}
 
 {% block content %}
-<div>Your application applies credit's necessities. Application is succesfully send to the bank.</div>
+<section id="succesful">
+    <header>
+        <h1>APPLICATION ACCEPTED</h1>
+    </header>
+    <p>Your application is appropriate for bank's conditions.</p>
+    <p>Application sent to <b>{{customer.bank}}</b> with customer information:</p>
+    <ul>
+        <p>Name:<b> {{customer.full_name}}</b></p>
+        <p>Identification Number:<b> {{customer.identification_number}}</b></p>
+        <p>Credit Type: <b>{{customer.credit}}</b></p>
+    </ul>
+    <hr>
+    <h4>You can not apply for another credit until you visit the bank!</h4>
+</section>
 {% endblock %}

@@ -31,19 +31,3 @@ h3 {
   top: 0;
   left: 0;
 }
-
-#main-navigation a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
-
-#main-navigation a:hover,
-#main-navigation a:active {
-  color: #cf79f1;
-}
-
-#main-navigation h1 a:hover,
-#main-navigation h1 a:active {
-  color: white;
-}

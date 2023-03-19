@@ -1,5 +1,3 @@
-from django.views import View
-from django.views.generic.edit import FormView
 from django.shortcuts import render, get_object_or_404
 from .models import Credit, Customer, Address, BankOption
 from.forms import ApplicationForm
@@ -36,7 +34,9 @@ def bank_a_application(request,slug):
                                last_name=form.cleaned_data['last_name'],
                                identification_number=form.cleaned_data['identification_number'],
                                job_title=form.cleaned_data['job_title'],
-                               salary=form.cleaned_data['salary'])
+                               salary=form.cleaned_data['salary'],
+                               bank=bank,
+                               credit=credit)
             address_form = Address(district=form.cleaned_data['district'],
                                city=form.cleaned_data['city'])
                 
@@ -57,15 +57,9 @@ def bank_a_application(request,slug):
                         flag=True
                 return flag
             
-            if (credit.slug == "mortgage-loan") and (customer.salary >= 100000):
+            if ((credit.slug == "mortgage-loan") and (customer.salary >= 50000)) or ((credit.slug == "car-loan") and (customer.salary >= 30000)) or ((credit.slug == "educational-loan") and (customer.salary >= 5000)):
                 flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
-            elif (credit.slug == "car-loan") and (customer.salary >= 50000):
-                flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
-            elif (credit.slug == "educational-loan") and (customer.salary >= 5000):
-                flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
+                return render(request,"credit/application-succesful.html", {"customer":customer}) if flag == True else render(request,"credit/application-done-before.html", {"customer":customer})
             else: 
                 return render(request, "credit/application-failed.html")
             
@@ -87,7 +81,9 @@ def bank_b_application(request,slug):
                                last_name=form.cleaned_data['last_name'],
                                identification_number=form.cleaned_data['identification_number'],
                                job_title=form.cleaned_data['job_title'],
-                               salary=form.cleaned_data['salary'])
+                               salary=form.cleaned_data['salary'],
+                               bank=bank,
+                               credit=credit)
             address_form = Address(district=form.cleaned_data['district'],
                                city=form.cleaned_data['city'])
             
@@ -108,18 +104,12 @@ def bank_b_application(request,slug):
                         flag=True
                 return flag
 
-            if (credit.slug == "mortgage-loan") and (customer.salary >= 100000):
+            if ((credit.slug == "mortgage-loan") and (customer.salary >= 30000)) or ((credit.slug == "car-loan") and (customer.salary >= 10000)) or ((credit.slug == "educational-loan") and (customer.salary >= 3000)):
                 flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")          
-            elif (credit.slug == "car-loan") and (customer.salary >= 50000):
-                flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
-            elif (credit.slug == "educational-loan") and (customer.salary >= 5000):
-                flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")         
+                return render(request,"credit/application-succesful.html", {"customer":customer}) if flag == True else render(request,"credit/application-done-before.html", {"customer":customer})
             else: 
-                return render(request, "credit/application-failed.html")
-            
+                return render(request, "credit/application-failed.html")         
+                    
         return render(request, "credit/application-form.html",{"form":form,"bank":bank,"credit":credit})
         
     else:
@@ -138,7 +128,9 @@ def bank_c_application(request,slug):
                                last_name=form.cleaned_data['last_name'],
                                identification_number=form.cleaned_data['identification_number'],
                                job_title=form.cleaned_data['job_title'],
-                               salary=form.cleaned_data['salary'])
+                               salary=form.cleaned_data['salary'],
+                               bank=bank,
+                               credit=credit)
             address_form = Address(district=form.cleaned_data['district'],
                                city=form.cleaned_data['city'])
 
@@ -160,18 +152,11 @@ def bank_c_application(request,slug):
                 return flag
 
 
-            if (credit.slug == "mortgage-loan") and (customer.salary >= 30000):
+            if ((credit.slug == "mortgage-loan") and (customer.salary >= 25000)) or ((credit.slug == "car-loan") and (customer.salary >= 5000)) or ((credit.slug == "educational-loan") and (customer.salary >= 1000)):
                 flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")      
-            elif (credit.slug == "car-loan") and (customer.salary >= 15000):
-                flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
-            elif (credit.slug == "educational-loan") and (customer.salary >= 2000):
-                flag = customer_control(customer,address_form)
-                return render(request,"credit/application-succesful.html") if flag == True else render(request,"credit/application-done-before.html")
+                return render(request,"credit/application-succesful.html",{"customer":customer}) if flag==True else render(request,"credit/application-done-before.html", {"customer":customer})
             else: 
                 return render(request, "credit/application-failed.html")
-            
         return render(request, "credit/application-form.html",{"form":form,"bank":bank,"credit":credit})
         
     else:

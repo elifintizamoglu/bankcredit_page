@@ -10,19 +10,21 @@
 {% endblock %}
 
 {% block content%}
-<section id="summary">
-   <h2>{{bank.name}}</h2> 
-   
+<section id="summary"> 
+    <h2>{{bank.name}}</h2>
    <article>
     {% for credit in bank_credits%}
         <h3>{{credit.name}}</h3>
         {{credit.content|linebreaks}}
         {% if bank.name == 'Bank A'%}
             <a href="{% url "bank-a-credit-application-page" slug=credit.slug %}" class="btn btn-dark">Go To Application Page</a>
+            <hr>
         {% elif bank.name == 'Bank B'%}
             <a href="{% url "bank-b-credit-application-page" slug=credit.slug %}" class="btn btn-dark">Go To Application Page</a>
+            <hr>
         {% elif bank.name == 'Bank C'%}
             <a href="{% url "bank-c-credit-application-page" slug=credit.slug %}" class="btn btn-dark">Go To Application Page</a>
+            <hr>
         {%endif%}
     {% endfor %}
    </article>

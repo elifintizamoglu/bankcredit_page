@@ -1,15 +1,16 @@
-body {
-    font-family: sans-serif;
-    margin: 0;
+  header {
+    text-align: center;
+    position: relative;
+    top: 20px;
   }
   
   form {
     margin: 3rem auto;
     width: 90%;
-    max-width: 30rem;
+    max-width: 50rem;
     padding: 1rem;
     border-radius: 12px;
-    background-color: white;
+    background-color: #5706c0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   }
   
@@ -17,15 +18,19 @@ body {
     cursor: pointer;
     padding: 0.5rem 1.5rem;
     border-radius: 6px;
-    background-color: #1f0050;
+    background-color: black;
     color: white;
     border: 1px solid #1f0050;
+    position: relative;
+    left:43%;
+
   }
   
   button:hover,
   button:active {
-    background-color: #320777;
+    background-color: white;
     border-color: #320777;
+    color:black
   }
   
   .form-control {
